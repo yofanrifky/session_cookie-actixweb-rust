@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "Restoran API",
+    "description": "CRUD menu dan pesanan menggunakan PostgreSQL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8080" },
+    { "key": "menuId", "value": "1" },
+    { "key": "orderId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Menu",
+      "item": [
+        { "name": "Lihat semua menu", "request": { "method": "GET", "url": "{{baseUrl}}/api/menus" } },
+        { "name": "Lihat menu berdasarkan ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/menus/{{menuId}}" } },
+        { "name": "Tambah menu", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Nasi Goreng\",\n  \"price\": 25000,\n  \"category\": \"Makanan\"\n}" }, "url": "{{baseUrl}}/api/menus" } },
+        { "name": "Ubah menu", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Nasi Goreng Spesial\",\n  \"price\": 30000,\n  \"category\": \"Makanan\"\n}" }, "url": "{{baseUrl}}/api/menus/{{menuId}}" } },
+        { "name": "Ubah sebagian field menu", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Nasi Goreng Spesial\"\n}" }, "url": "{{baseUrl}}/api/menus/{{menuId}}" } },
+        { "name": "Hapus menu", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/menus/{{menuId}}" } }
+      ]
+    },
+    {
+      "name": "Pesanan",
+      "item": [
+        { "name": "Lihat semua pesanan", "request": { "method": "GET", "url": "{{baseUrl}}/api/orders" } },
+        { "name": "Lihat pesanan berdasarkan ID", "request": { "method": "GET", "url": "{{baseUrl}}/api/orders/{{orderId}}" } },
+        { "name": "Tambah pesanan", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"customer_name\": \"Budi\",\n  \"item_name\": \"Nasi Goreng\",\n  \"quantity\": 2,\n  \"status\": \"pending\"\n}" }, "url": "{{baseUrl}}/api/orders" } },
+        { "name": "Ubah pesanan", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"customer_name\": \"Budi\",\n  \"item_name\": \"Nasi Goreng Spesial\",\n  \"quantity\": 3,\n  \"status\": \"diproses\"\n}" }, "url": "{{baseUrl}}/api/orders/{{orderId}}" } },
+        { "name": "Ubah sebagian field pesanan", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"customer_name\": \"Yofan\"\n}" }, "url": "{{baseUrl}}/api/orders/{{orderId}}" } },
+        { "name": "Hapus pesanan", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/orders/{{orderId}}" } }
+      ]
+    }
+  ]
+}
